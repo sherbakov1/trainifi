@@ -1,0 +1,18 @@
+.line {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 1140px;
+  margin: auto;
+  height: 7px;
+  margin-top: -10px;
+  border-bottom: 1px solid #e1e4e5;
+}
+
+.icon-circle {
+  position: absolute;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background: #00c853;
+}

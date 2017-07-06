@@ -1,0 +1,22 @@
+.logotype {
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  display: flex;
+  align-self: center;
+}
+
+.logotype_big {
+  font-size: 50px;
+  margin: 30px 0;
+}
+
+.logotype_small {
+  font-size: 30px;
+  padding: 5px 0;
+}
+
+.logotype span {
+  color: #00c853;
+}

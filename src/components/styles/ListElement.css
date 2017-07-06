@@ -1,0 +1,46 @@
+.list-element {
+  position: relative;
+  width: 200px;
+  margin: 10px;
+}
+
+.list-element-h {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  height: 45px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.list-element-route {
+  opacity: .5;
+}
+
+.list-ul {
+  list-style-type: none;
+  padding: 20px 10px;
+  margin: 0;
+  font-size: 14px;
+  border-right: 1px solid #e1e4e5;
+  border-left: 1px solid #e1e4e5;
+}
+
+.list-ul li span {
+  line-height: 2;
+  font-weight: 500;
+}
+
+.train-found {
+  background: #00c853;
+}
+
+.train-running {
+  border-bottom: 3px solid #00c853;
+}
+
+.train-not-running {
+  border-bottom: 3px solid #FF5252;
+}

@@ -1,0 +1,35 @@
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.input {
+  height: 35px;
+  padding: 0 15px;
+  border: 0;
+}
+
+.button {
+  height: 35px;
+  width: 80px;
+  font-family: 'Quicksand', sans-serif;
+  color: #fff;
+  background-color: #00c853;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.input:focus,
+.button:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder {font-family: 'Quicksand', sans-serif; color: #c8c8c8;}
+::-moz-placeholder          {font-family: 'Quicksand', sans-serif; color: #c8c8c8;}/* Firefox 19+ */
+:-moz-placeholder           {font-family: 'Quicksand', sans-serif; color: #c8c8c8;}/* Firefox 18- */
