@@ -1,62 +1,31 @@
-import React, { Component } from 'react';
-import Logo from './Logo';
+import React from 'react';
 import Station from './Station';
 import Line from './Line';
-import ListElement from './ListElement';
+import Logo from './Logo';
+import Train from './Train';
 import FormContainer from './FormContainer';
 import './styles/HiddenScreen.css';
 
-export default class HiddenScreen extends Component {
-
-  uniqueWagons(arr) {
-    let obj = {};
-    for(let i=0; i<arr.length; i++) {
-      obj[arr[i]] = arr[i];
-    }
-    return Object.keys(obj).join(', ');
-  }
-
-  renderTrains(train) {
-    const trainData = train.journeySections;
-    const trainSchedule = `${trainData.beginTimeTableRow.stationShortCode} - ${trainData.endTimeTableRow.stationShortCode}`;
-    const loco = trainData.locomotives[0].locomotiveType;
-    const locoPowerType = trainData.locomotives[0].powerType;
-    const speed = `${trainData.maximumSpeed} km/h`;
-    const length = `${trainData.totalLength} m`;
-    const wagons = this.uniqueWagons(trainData.wagons.map(wagon => wagon.wagonType));
-
+const HiddenScreen = ({station, didFetch, trains}) => {
     return (
-      <ListElement
-        key={train.trainNumber+train.trainType+train.departureDate}
-        number={train.trainNumber}
-        route={trainSchedule}
-        loco={`${loco} ${locoPowerType}`}
-        speed={speed}
-        length={length}
-        wagons={wagons}
-        status={train.runningCurrently ? 'train-running' : 'train-not-running'}
-        />
-    )
-  }
-
-  render() {
-    return (
-          <div className={`container-hidden visible-${this.props.visible}`}>
+          <div className={`container-hidden visible-${didFetch}`}>
             <div className='container-top'>
               <div className='container-1140px'>
                 <Logo />
-                <FormContainer getTrains={this.props.getTrains}/>
+                <FormContainer />
               </div>
             </div>
-            <Station station={this.props.station}/>
+            <Station station={station} />
             <Line />
             <div className='list'>
-              { this.props.trains == null ? <p>Loading</p> :
-                this.props.trains.length === 0 ? <p>Check station name</p> :
-                this.props.trains.map(item => this.renderTrains(item))
-              }
+              {trains.map(train => {
+              return train.journey.hasOwnProperty('beginTimeTableRow') ?
+                <Train train={train} composition={true} key={train.id} /> :
+                <Train train={train} composition={false} key={train.id} />
+              })}
             </div>
           </div>
     )
   }
-}
+
+  export default HiddenScreen;

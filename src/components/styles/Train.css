@@ -26,6 +26,7 @@
   font-size: 14px;
   border-right: 1px solid #e1e4e5;
   border-left: 1px solid #e1e4e5;
+  min-height: 160px;
 }
 
 .list-ul li span {
@@ -33,14 +34,31 @@
   font-weight: 500;
 }
 
-.train-found {
+.train-found-true {
   background: #00c853;
 }
 
-.train-running {
+.train-found-false {
+  background: #e1e4e5;
+}
+
+.train-date {
+  text-align: center;
+  font-weight: 500;
+  color: #e1e4e5;
+  padding-bottom: 10px;
+}
+
+.running-true {
   border-bottom: 3px solid #00c853;
 }
 
-.train-not-running {
+.running-false {
   border-bottom: 3px solid #FF5252;
+}
+
+.running-no-composition {
+  text-align: center;
+  color: #e1e4e5;
+  border-bottom: 3px solid #e1e4e5;
 }

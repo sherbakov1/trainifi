@@ -1,30 +1,29 @@
-import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { selectStation, fetchTrains } from './redux';
 import Form from './Form';
 
-export default class FormContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: ''
-    }
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value})
-  }
-
-  handleClick(event) {
-    event.preventDefault();
-    this.props.getTrains(this.state.value.toUpperCase())
-  }
-
-  render() {
-    return (
-      <Form
-        handleClick={this.handleClick.bind(this)}
-        handleChange={this.handleChange.bind(this)}
-        value={this.state.value}
-        />
-    )
+const mapStateToProps = (state) => {
+  return {
+    trains: state.trains,
+    value: state.station
   }
 }
+
+const mapDispatchToProps = (dispatch, station) => {
+  return {
+    handleChange: (event) => {
+      dispatch(selectStation(event.target.value))
+    },
+    handleSubmit: (event) => {
+      event.preventDefault();
+      dispatch(fetchTrains())
+    }
+  }
+}
+
+const FormContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Form)
+
+export default FormContainer;
