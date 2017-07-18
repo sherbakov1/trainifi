@@ -22,7 +22,7 @@ function unique(arr) {
 // GET
 const api = {
   fetchTrains: (station) => {
-    const getTrains = `https://rata.digitraffic.fi/api/v1/live-trains?station=${station}`;
+    const getTrains = `https://rata.digitraffic.fi/api/v1/live-trains?station=${station.replace(/[\\]/gi,'/')}`;
     return axios.get(getTrains).then(response => {
         return Promise.all(response.data.map(item => {
           return axios.get(`https://rata.digitraffic.fi/api/v1/compositions/${item.trainNumber}?departure_date=${item.departureDate}`)

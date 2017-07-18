@@ -29,15 +29,22 @@
   transition: all 0.5s;
 }
 
-.list {
+.trains-list {
   max-width: 1140px;
   margin: auto;
   padding: 40px 10px;
   display: flex;
-  flex-direction: row;
+  flex-flow: row wrap;
   align-items: flex-start;
   justify-content: center;
-  flex-wrap: wrap;
+}
+
+.train-hidden {
+  margin: 0 10px;
+}
+
+.error-message {
+  color: #FF5252;
 }
 
 @media (max-width: 480px) {

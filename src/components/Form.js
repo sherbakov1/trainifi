@@ -8,7 +8,7 @@ const Form = ({handleChange, value, handleSubmit}) =>
       type="text"
       onChange={handleChange}
       value={value}
-      placeholder="Enter station shortcode"
+      placeholder="Station shortcode"
     />
     <button className="button">Search</button>
   </form>

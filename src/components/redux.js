@@ -57,13 +57,12 @@ export const fetchTrains = () => {
     dispatch(requestTrains(station))
     return api.fetchTrains(station)
       .then(response => {
-        dispatch(changeStation(station))
+        dispatch(changeStation(station.toUpperCase()))
         dispatch(receiveTrains(response))
         dispatch(clearStation())
       })
       .catch(e => {
-        const errorMsg = `${e.name}: ${e.message}`
-        dispatch(receiveError(errorMsg))
+        dispatch(receiveError(e.message))
 });
   }
 }
@@ -72,7 +71,7 @@ export const fetchTrains = () => {
 function station(state = '', action) {
   switch (action.type) {
     case SELECT_STATION:
-      return action.station.toUpperCase()
+      return action.station
     case CLEAR_STATION:
       return '';
     default:
@@ -82,6 +81,7 @@ function station(state = '', action) {
 
 function trains(state = {
   station: '',
+  error: '',
   isFetching: false,
   didFetch: false,
   trains: []
@@ -90,6 +90,7 @@ function trains(state = {
     case FETCH_TRAINS_REQUEST:
       return {
         ...state,
+        error: '',
         isFetching: true
       }
     case FETCH_TRAINS_SUCCESS:
@@ -103,8 +104,9 @@ function trains(state = {
       return {
         ...state,
         isFetching: false,
-        didFetch: false,
-        trains: action.error
+        didFetch: true,
+        trains: [],
+        error: action.error
       }
     case CHANGE_STATION:
       return {
@@ -120,3 +122,7 @@ export const rootReducer = combineReducers({
   station,
   trains
 })
+
+// function stataionTrim(str) {
+//   return str.replace(/[^a-zA-Z]/gi,'')
+// }

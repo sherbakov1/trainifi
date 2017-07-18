@@ -1,10 +1,11 @@
-.list-element {
+.train {
   position: relative;
   width: 200px;
   margin: 10px;
+  float: left;
 }
 
-.list-element-h {
+.train-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,11 +16,18 @@
   color: #fff;
 }
 
-.list-element-route {
+.train-date {
+  text-align: center;
+  font-weight: 500;
+  color: #e1e4e5;
+  padding-bottom: 10px;
+}
+
+.train-route {
   opacity: .5;
 }
 
-.list-ul {
+.train-info-list {
   list-style-type: none;
   padding: 20px 10px;
   margin: 0;
@@ -29,7 +37,7 @@
   min-height: 160px;
 }
 
-.list-ul li span {
+.train-info-list li span {
   line-height: 2;
   font-weight: 500;
 }
@@ -42,22 +50,15 @@
   background: #e1e4e5;
 }
 
-.train-date {
-  text-align: center;
-  font-weight: 500;
-  color: #e1e4e5;
-  padding-bottom: 10px;
-}
-
-.running-true {
+.train-running-true {
   border-bottom: 3px solid #00c853;
 }
 
-.running-false {
+.train-running-false {
   border-bottom: 3px solid #FF5252;
 }
 
-.running-no-composition {
+.train-no-composition {
   text-align: center;
   color: #e1e4e5;
   border-bottom: 3px solid #e1e4e5;
